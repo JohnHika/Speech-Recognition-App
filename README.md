@@ -1,16 +1,53 @@
-# Improved Speech Recognition App
+# 🎤 Speech Recognition App
 
-A comprehensive Python-based speech recognition application with multiple API support, language selection, pause/resume functionality, and file saving capabilities.
+[![Streamlit App](https://static.streamlit.io/badges/streamlit_badge_black_white.svg)](https://speech-recognition-app.streamlit.app)
 
-## Features
+A comprehensive speech recognition application with multiple API support, built with Python and Streamlit.
 
-### 🎯 Core Features
-- **Multiple Speech Recognition APIs**: Support for Google, Google Cloud, Wit.ai, Microsoft Azure, and Bing
-- **Language Selection**: 13+ supported languages including English, Spanish, French, German, Chinese, Japanese, and more
-- **Pause/Resume**: Control speech recognition process with pause and resume functionality
-- **Save Transcriptions**: Export transcriptions to both TXT and JSON formats
-- **Enhanced Error Handling**: Meaningful error messages with suggestions for resolution
-- **Configuration Persistence**: Settings and API keys are saved automatically
+## � Features
+
+- **🔄 Multiple APIs**: Google, Google Cloud, Wit.ai, Microsoft Azure, Bing
+- **🌍 Multi-language**: 13+ supported languages  
+- **🎤 Web Interface**: Modern Streamlit-based UI
+- **📱 Audio Recording**: Browser-based recording
+- **📁 File Upload**: Support for WAV, MP3, FLAC, M4A, OGG
+- **💾 Export Options**: TXT, JSON, CSV formats
+- **⏸️ Pause/Resume**: Control recording process
+- **📊 Statistics**: Track transcriptions and usage
+
+## 🚀 Quick Start
+
+### 🌐 Try it Online
+👉 **[Launch Streamlit App](https://speech-recognition-app.streamlit.app)**
+
+### 💻 Run Locally
+
+1. **Clone the repository:**
+   ```bash
+   git clone https://github.com/JohnHika/Speech-Recognition-App.git
+   cd Speech-Recognition-App
+   ```
+
+2. **Install dependencies:**
+   ```bash
+   pip install -r requirements.txt
+   ```
+
+3. **Run the Streamlit app:**
+   ```bash
+   streamlit run streamlit_app_improved.py
+   ```
+
+## 🎯 For Streamlit Cloud Deployment
+
+**Main file to deploy:** `streamlit_app_improved.py`
+
+This is the recommended version for Streamlit Cloud as it:
+- ✅ Works without complex audio threading
+- ✅ Uses browser-based audio recording
+- ✅ Handles file uploads properly
+- ✅ Has better error handling for web deployment
+- ✅ More stable session state management
 
 ### 🌍 Supported Languages
 - English (US/UK)

@@ -1,0 +1,11 @@
+{
+  "api_keys": {
+    "_comment": "Add your API keys here. Remove this comment and add actual keys.",
+    "google_cloud": "",
+    "wit": "",
+    "azure": "",
+    "bing": ""
+  },
+  "default_api": "google",
+  "default_language": "en-US"
+}

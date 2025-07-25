@@ -10,7 +10,6 @@ Features:
 """
 
 import speech_recognition as sr
-import pyaudio
 import threading
 import time
 import os
@@ -18,11 +17,26 @@ from datetime import datetime
 import json
 from typing import Dict, List, Optional
 
+# Try to import pyaudio, but don't fail if it's not available (for Streamlit Cloud)
+try:
+    import pyaudio
+    PYAUDIO_AVAILABLE = True
+except ImportError:
+    PYAUDIO_AVAILABLE = False
+
 
 class SpeechRecognitionApp:
     def __init__(self):
         self.recognizer = sr.Recognizer()
-        self.microphone = sr.Microphone()
+        # Only initialize microphone if PyAudio is available
+        if PYAUDIO_AVAILABLE:
+            try:
+                self.microphone = sr.Microphone()
+            except Exception:
+                self.microphone = None
+        else:
+            self.microphone = None
+        
         self.is_listening = False
         self.is_paused = False
         self.transcribed_text = []
@@ -109,6 +123,10 @@ class SpeechRecognitionApp:
     
     def setup_microphone(self):
         """Setup and calibrate the microphone"""
+        if not self.microphone:
+            print("Microphone not available (PyAudio not installed)")
+            return False
+            
         print("Setting up microphone...")
         try:
             with self.microphone as source:
@@ -266,8 +284,16 @@ class SpeechRecognitionApp:
                 print("Suggestion: Check your API key configuration")
             return None
     
+    def transcribe_audio(self, audio):
+        """Transcribe audio data directly (for use with uploaded files)"""
+        return self.transcribe_speech(audio)
+    
     def listen_continuously(self):
         """Continuously listen for speech in a separate thread"""
+        if not self.microphone:
+            print("Error: Microphone not available (PyAudio not installed)")
+            return
+            
         print(f"\nListening with {self.available_apis[self.current_api]['name']} in {self.supported_languages[self.current_language]}...")
         print("Say something! (Press 'p' to pause, 'r' to resume, 'q' to quit)")
         
